@@ -1,0 +1,11 @@
+rect{
+  stroke-width: 4;
+  stroke: gray;
+}
+
+circle{
+  /*fill:               blue;*/
+  /*fill-opacity:       0.4;*/
+  stroke:             gray;
+  stroke-width:       4;
+}
