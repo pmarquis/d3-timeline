@@ -89,11 +89,4 @@ Timeline.prototype.render = function(container){
         .attr("x", function(d){ return xScale(d.time) - margin.right; })
         .attr("y", textProps.height)
         .text(function(d){ return d.comment; });
-  
-  g.selectAll("text")
-      .data(this.data)
-      .enter().append("text")
-        .attr("x", function(d){ return xScale(d.time) - margin.right; })
-        .attr("y", textProps.height + 20)
-        .text(function(d){ return d.comment2; });
 };
