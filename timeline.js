@@ -47,8 +47,8 @@ Timeline.prototype.render = function(container){
   var rectProps = {height: 30};
   var circleProps = {radius : 20};
 
-  var svg = d3.select(container);
-  var g = svg.append("g")
+  var container = d3.select(container);
+  var g = container.append("g")
             .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
   var xScale = d3.scale.linear()
