@@ -10,15 +10,15 @@
 <svg width="100%" height="300">
 </svg> 
  <script>
-  var data = [{ time: 0, complete: true, comment: "First step" },
-              { time: 3, complete: true, comment: "Second step" },
-              { time: 5, complete: true, comment: "Third step" }, 
-              { time: 11, complete: false, comment: "Fourth step" }, 
-              { time: 15, complete: false, comment: "Fifth step" }];
+  var data = [{ time: 0, complete: true, comment: "2015-10-29" },
+              { time: 3, complete: true, comment: "2015-10-29" },
+              { time: 5, complete: true, comment: "2015-10-29" }, 
+              { time: 11, complete: false, comment: "2015-10-29" }, 
+              { time: 15, complete: false, comment: "2015-10-29" }];
 
-timeline = new Timeline(data);
-timeline.processData();
-timeline.render("svg");
+  timeline = new Timeline(data);
+  timeline.processData();
+  timeline.render("svg");
  </script>
 </body>
 </html>

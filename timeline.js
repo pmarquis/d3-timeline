@@ -1,7 +1,7 @@
 
 var Timeline = function(data){
   this.data = data;
-  this.nbData = this.data.length;
+  this.nbData = data.length;
 };
 
 Timeline.prototype.processData = function(){
@@ -30,14 +30,19 @@ Timeline.prototype.processData = function(){
     this.data[i+1].time = this.data[i].time + this.data[i].width;
   }
 
-  // Fill "color" values
+  // Fill timeline "color" values
   var rangeBlueColors = ["#BDCEF1", "#9EB8EB", "#80A1E4", "#628BDE", "#4374D7", "#2B60CB", "#2451AC", "#1E438E" ];
   
   var rangeRedColors = ["#FF8080","#FF6666","#FF4D4D","#FF3333","#FF1A1A","#FF0000","#E60000","#CC0000","#B30000","#990000","#800000","#660000"];
 
   nbColors = rangeRedColors.length;
   for(i=0; i<this.nbData; i++){
-    this.data[i].color = rangeRedColors[parseInt((i+1) * nbColors / this.nbData)];
+    if( (i < this.nbData-1) && !this.data[i+1].complete ){
+      this.data[i].color = "lightgrey";
+    }
+    else{
+      this.data[i].color = rangeRedColors[parseInt((i+1) * nbColors / this.nbData)];
+    }
   }
 };
 
@@ -46,6 +51,7 @@ Timeline.prototype.render = function(container){
   var margin = { left: 60, top: 60, right: 60, bottom: 60};
   var rectProps = {height: 30};
   var circleProps = {radius : 20};
+  var textProps = { height: 50};
 
   var container = d3.select(container);
   var g = container.append("g")
@@ -81,8 +87,13 @@ Timeline.prototype.render = function(container){
       .data(this.data)
       .enter().append("text")
         .attr("x", function(d){ return xScale(d.time) - margin.right; })
-        .attr("y", 40)
-        .text(function(d){ return d.comment; })
-        .attr("font-family", "sans-serif")
-        .attr("font-size", "20px");
+        .attr("y", textProps.height)
+        .text(function(d){ return d.comment; });
+  
+  g.selectAll("text")
+      .data(this.data)
+      .enter().append("text")
+        .attr("x", function(d){ return xScale(d.time) - margin.right; })
+        .attr("y", textProps.height + 20)
+        .text(function(d){ return d.comment2; });
 };
