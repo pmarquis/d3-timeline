@@ -1,3 +1,3 @@
-Example of timeline
+## Example of timeline
 
 ![Timeline](timeline.png)
