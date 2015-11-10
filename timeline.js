@@ -59,13 +59,6 @@ Timeline.prototype.render = function(container){
                 .orient("bottom")
                 .scale(xScale);
 
-  for(i=0; i < this.nbData; i++){
-    console.log(this.data[i]);
-    console.log(this.data[i].time);
-    console.log(xScale(this.data[i].time));
-    console.log(xScale(this.data[i].width));
-    console.log(this.data[i].color);
-  }
 
   g.selectAll("rect")
       .data(this.data)
@@ -83,4 +76,13 @@ Timeline.prototype.render = function(container){
         .attr("cy", 0)
         .attr("r", circleProps.radius)
         .attr("fill", function(d){ return d.complete ? "darkblue" : "lightgrey"; });
+  
+  g.selectAll("text")
+      .data(this.data)
+      .enter().append("text")
+        .attr("x", function(d){ return xScale(d.time) - margin.right; })
+        .attr("y", 40)
+        .text(function(d){ return d.comment; })
+        .attr("font-family", "sans-serif")
+        .attr("font-size", "20px");
 };

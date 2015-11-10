@@ -7,14 +7,14 @@
   <script src="./timeline.js" type="text/javascript" charset="utf-8"></script>
 <body>
 
-<svg width="100%" height="200">
+<svg width="100%" height="300">
 </svg> 
  <script>
-  var data = [{ time: 0, complete: true },
-              { time: 3, complete: true },
-              { time: 5, complete: true }, 
-              { time: 11, complete: false }, 
-              { time: 15, complete: false }];
+  var data = [{ time: 0, complete: true, comment: "First step" },
+              { time: 3, complete: true, comment: "Second step" },
+              { time: 5, complete: true, comment: "Third step" }, 
+              { time: 11, complete: false, comment: "Fourth step" }, 
+              { time: 15, complete: false, comment: "Fifth step" }];
 
 timeline = new Timeline(data);
 timeline.processData();
